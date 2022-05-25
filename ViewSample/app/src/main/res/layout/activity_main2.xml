@@ -18,14 +18,40 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
         android:layout_marginTop="5dp"
-        android:inputType="text"
-        android:background="#ffffff" />
+        android:layout_marginBottom="25dp"
+        android:background="#ffffff"
+        android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#df7401"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbDrink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:background="@color/white"
+            android:text="@string/cb_drink" />
+
+
+        <CheckBox
+            android:id="@+id/cbFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/cb_food" />
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btSave2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/bt_save" />
 </LinearLayout>
