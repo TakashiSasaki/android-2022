@@ -17,12 +17,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btClick = findViewById(R.id.btClick);
-        HelloListener l = new HelloListener();
-        btClick.setOnClickListener(l);
+
+        //HelloListener l = new HelloListener();
+
+        //無名クラスを使った書き方
+        btClick.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                EditText input = findViewById(R.id.etName);
+                TextView output = findViewById(R.id.tvOutput);
+                String inputStr = input.getText().toString();
+                output.setText(inputStr + "さん、こんにちは");
+            }
+        });
     }
 
+    /*
     private class HelloListener implements View.OnClickListener {
-
         @Override
         public void onClick(View v) {
             EditText input = findViewById(R.id.etName);
@@ -30,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             String inputStr = input.getText().toString();
             output.setText(inputStr + "さん、こんにちは");
         }//onClick
+     */
     }//View.OnClickListener
 
 
