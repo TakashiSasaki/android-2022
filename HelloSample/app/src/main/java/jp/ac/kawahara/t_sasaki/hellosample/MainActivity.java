@@ -17,11 +17,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btClick = findViewById(R.id.btClick);
+        HelloListener l = new HelloListener();
 
-        //HelloListener l = new HelloListener();
+        Button btClick = findViewById(R.id.btClick);
+        btClick.setOnClickListener(l);
+
+        Button btClear = findViewById(R.id.btClear);
+        btClear.setOnClickListener(l);
 
         //無名クラスを使った書き方
+        /*
         btClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,17 +38,27 @@ public class MainActivity extends AppCompatActivity {
                 output.setText(inputStr + "さん、こんにちは");
             }
         });
+        */
     }//onCreate
 
-    /*
+
     private class HelloListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             EditText input = findViewById(R.id.etName);
             TextView output = findViewById(R.id.tvOutput);
-            String inputStr = input.getText().toString();
-            output.setText(inputStr + "さん、こんにちは");
+
+            switch (v.getId()) {
+                case R.id.btClick:
+                    String inputStr = input.getText().toString();
+                    output.setText(inputStr + "さん、こんにちは");
+                    break;
+                case R.id.btClear:
+                    input.setText("");
+                    output.setText("");
+                    break;
+            }
         }//onClick
     }//View.OnClickListener
-    */
+
 }

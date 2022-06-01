@@ -13,13 +13,22 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:inputType="text"
+        android:autofillHints="name"
+        android:hint="@string/hint_onamae"/>
 
     <Button
         android:id="@+id/btClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bt_click" />
+
+    <Button
+        android:id="@+id/btClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_clear" />
+
 
     <TextView
         android:id="@+id/tvOutput"
