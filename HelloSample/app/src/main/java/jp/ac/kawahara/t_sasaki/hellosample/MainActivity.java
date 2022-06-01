@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btClick = findViewById(R.id.btClick);
+        HelloListener l = new HelloListener();
+        btClick.setOnClickListener(l);
     }
 
     private class HelloListener implements View.OnClickListener {
@@ -24,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
             TextView output = findViewById(R.id.tvOutput);
             String inputStr = input.getText().toString();
             output.setText(inputStr + "さん、こんにちは");
-        }
-    }
+        }//onClick
+    }//View.OnClickListener
 
 
 
