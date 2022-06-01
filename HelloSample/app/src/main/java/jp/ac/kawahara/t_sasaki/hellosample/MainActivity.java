@@ -3,6 +3,7 @@ package jp.ac.kawahara.t_sasaki.hellosample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         btClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.setBackgroundColor(Color.YELLOW);
+                //v.setVisibility(View.INVISIBLE);
                 EditText input = findViewById(R.id.etName);
                 TextView output = findViewById(R.id.tvOutput);
                 String inputStr = input.getText().toString();
