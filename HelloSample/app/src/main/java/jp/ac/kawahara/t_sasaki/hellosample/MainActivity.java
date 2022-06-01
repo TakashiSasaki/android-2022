@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //HelloListener l = new HelloListener();
 
         //無名クラスを使った書き方
-        btClick.setOnClickListener(new View.OnClickListener(){
+        btClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText input = findViewById(R.id.etName);
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 output.setText(inputStr + "さん、こんにちは");
             }
         });
-    }
+    }//onCreate
 
     /*
     private class HelloListener implements View.OnClickListener {
@@ -41,13 +41,6 @@ public class MainActivity extends AppCompatActivity {
             String inputStr = input.getText().toString();
             output.setText(inputStr + "さん、こんにちは");
         }//onClick
-     */
     }//View.OnClickListener
-
-
-
-
-
-
-
+    */
 }
