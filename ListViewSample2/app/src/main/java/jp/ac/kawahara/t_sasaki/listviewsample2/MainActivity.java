@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<String> menuList = new ArrayList<String>();
+        List<String> menuList = new ArrayList<>();
         menuList.add("から揚げ定食");
         menuList.add("ハンバーグ定食");
         menuList.add("生姜焼き定食");
