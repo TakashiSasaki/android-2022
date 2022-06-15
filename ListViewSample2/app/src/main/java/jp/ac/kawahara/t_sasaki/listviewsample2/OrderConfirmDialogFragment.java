@@ -18,9 +18,10 @@ public class OrderConfirmDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.dialog_title);
         builder.setMessage(R.string.dialog_msg);
-        builder.setPositiveButton(R.string.dialog_btn_ok, new DialogButtonClickListener());
-        builder.setNegativeButton(R.string.dialog_btn_ng, new DialogButtonClickListener());
-        builder.setNeutralButton(R.string.dialog_btn_nu, new DialogButtonClickListener());
+        DialogButtonClickListener l = new DialogButtonClickListener();
+        builder.setPositiveButton(R.string.dialog_btn_ok, l);
+        builder.setNegativeButton(R.string.dialog_btn_ng, l);
+        builder.setNeutralButton(R.string.dialog_btn_nu, l);
         return builder.create();
     }//onCreateDialog
 

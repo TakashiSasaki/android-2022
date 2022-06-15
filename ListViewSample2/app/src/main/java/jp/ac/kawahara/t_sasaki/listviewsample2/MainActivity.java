@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         lvMenu.setOnItemClickListener(new ListItemClickListener());
     }//onCreate
 
-    private class ListItemClickListener implements AdapterView.OnItemClickListener{
+    private class ListItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
