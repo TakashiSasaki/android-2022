@@ -41,9 +41,12 @@ public class MainActivity extends AppCompatActivity {
         SimpleAdapter adapter = new SimpleAdapter(
                 MainActivity.this,
                 menuList,
-                android.R.layout.simple_list_item_2,
+                //android.R.layout.simple_list_item_2,
+                R.layout.myitem,
                 new String[]{"name", "price"},
-                new int[]{android.R.id.text1, android.R.id.text2});
+                //new int[]{android.R.id.text1, android.R.id.text2}
+                new int[]{R.id.t1, R.id.t2}
+        );
 
         ListView lv = findViewById(R.id.lvMenu);
         lv.setAdapter(adapter);
