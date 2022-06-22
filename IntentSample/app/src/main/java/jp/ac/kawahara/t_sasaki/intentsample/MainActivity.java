@@ -2,7 +2,10 @@ package jp.ac.kawahara.t_sasaki.intentsample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -48,7 +51,26 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{R.id.t1, R.id.t2}
         );
 
-        ListView lv = findViewById(R.id.lvMenu);
+        final ListView lv = findViewById(R.id.lvMenu);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new ListItemClickListener());
+    }
+
+    private class ListItemClickListener
+            implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent,
+                                View view, int position, long id) {
+            final Map<String, String> item =
+                    (Map<String, String>)
+                            parent.getItemAtPosition(position);
+            final String menuName = item.get("name");
+            final String menuPrice = item.get("price");
+
+            Intent intent = new Intent(MainActivity.this,
+                    MenuThanksActivity.class);
+            startActivity(intent);
+        }
     }
 }
