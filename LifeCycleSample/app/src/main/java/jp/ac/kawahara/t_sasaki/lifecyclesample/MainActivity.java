@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
-        Log.i("LifeCycleSample","MainActivity#onRestart called");
+        Log.i("LifeCycleSample", "MainActivity#onRestart called");
         super.onRestart();
     }
 
@@ -52,19 +52,10 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void onButtonClick(View view){
+    public void onButtonClick(View view) {
         final Intent i =
                 new Intent(MainActivity.this, SubActivity.class);
         startActivity(i);
     }
-
-
-
-
-
-
-
-
-
 
 }
