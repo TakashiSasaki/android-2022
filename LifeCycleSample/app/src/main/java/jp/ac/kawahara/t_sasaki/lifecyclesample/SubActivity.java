@@ -42,13 +42,13 @@ public class SubActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        Log.i("LifeCycleSample", "SubActivity#onStop");
+        Log.i("LifeCycleSample", "SubActivity#onStop called");
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        Log.i("LifeCycleSample", "SubActivity#onDestroy");
+        Log.i("LifeCycleSample", "SubActivity#onDestroy called");
         super.onDestroy();
     }
 
