@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(MainActivity.this,
                     MenuThanksActivity.class);
+            intent.putExtra("menuName", menuName);
+            intent.putExtra("menuPrice", menuPrice);
             startActivity(intent);
         }
     }

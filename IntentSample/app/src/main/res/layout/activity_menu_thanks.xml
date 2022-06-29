@@ -26,17 +26,24 @@
 
         <TextView
             android:id="@+id/tvMenuName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:background="#FDD835"/>
 
         <TextView
             android:id="@+id/tvMenuPrice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:background="#AFEDF4"/>
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bt_thx_back" />
+        android:text="@string/bt_thx_back"
+        android:onClick="onBackButtonClick"
+        android:textSize="30sp"/>
 </LinearLayout>
