@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +16,22 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView _lvMenu;
+    private List<Map<String, Object>> _menuList;
+    private static final String[] FROM = {"name", "price"};
+    private static final int[] TO = {R.id.tvMenuNameRow, R.id.tvMenuPriceRow};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        _lvMenu = findViewById(R.id.lvMenu);
+        _menuList = createTeishokuList();
+
+        SimpleAdapter adapter = new SimpleAdapter(this, _menuList, R.layout.row, FROM, TO);
+        _lvMenu.setAdapter(adapter);
+        _lvMenu.setOnItemClickListener(new ListItemClickListener());
     }
 
     private List<Map<String, Object>> createTeishokuList(){
@@ -50,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent,
                                 View view, int position, long id) {
+            //noinspection unchecked
             final Map<String, Object> item =
                     (Map<String, Object>)
                             parent.getItemAtPosition(position);
@@ -63,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }//onItemClick
     }//OnItemClickListener
+
+
 
 
 }
