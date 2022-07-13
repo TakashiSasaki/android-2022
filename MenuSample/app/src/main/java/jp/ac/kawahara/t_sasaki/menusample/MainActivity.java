@@ -1,11 +1,13 @@
 package jp.ac.kawahara.t_sasaki.menusample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,7 +46,31 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private List<Map<String, Object>> createTeishokuList(){
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        //final int itemId = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.menuListOptionTeishoku:
+                _menuList = createTeishokuList();
+                _lvMenu.setAdapter(
+                        new SimpleAdapter(MainActivity.this, _menuList,
+                                R.layout.row,
+                                FROM, TO));
+                return true;
+            case R.id.menuListOptionCurry:
+                _menuList = createCurryList();
+                _lvMenu.setAdapter(
+                        new SimpleAdapter(MainActivity.this, _menuList,
+                                R.layout.row,
+                                FROM, TO));
+                return true;
+            default:
+                return false;
+        }//switch
+    }//onOptionsItemSelected
+
+    private List<Map<String, Object>> createTeishokuList() {
         List<Map<String, Object>> menuList = new ArrayList<>();
 
         Map<String, Object> menu = new HashMap<>();
@@ -68,9 +94,26 @@ public class MainActivity extends AppCompatActivity {
         return menuList;
     }//createTeishokuList
 
+    private List<Map<String, Object>> createCurryList() {
+        List<Map<String, Object>> menuList = new ArrayList<>();
+
+        Map<String, Object> menu = new HashMap<>();
+        menu.put("name", "ビーフカレー");
+        menu.put("price", 520);
+        menu.put("desc", "特選スパイスをきかせた国産ビーフ100％のカレーです。");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("name", "ポークカレー");
+        menu.put("price", 420);
+        menu.put("desc", "特選スパイスをきかせた国産ポーク100％のカレーです。");
+        menuList.add(menu);
+
+        return menuList;
+    }//createCurryList
 
     private class ListItemClickListener
-            implements AdapterView.OnItemClickListener{
+            implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent,
@@ -79,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
             final Map<String, Object> item =
                     (Map<String, Object>)
                             parent.getItemAtPosition(position);
-            final String menuName = (String)item.get("name");
-            final Integer menuPrice = (Integer)item.get("price");
+            final String menuName = (String) item.get("name");
+            final Integer menuPrice = (Integer) item.get("price");
 
             Intent intent = new Intent(MainActivity.this,
                     MenuThanksActivity.class);
@@ -89,8 +132,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }//onItemClick
     }//OnItemClickListener
-
-
 
 
 }
