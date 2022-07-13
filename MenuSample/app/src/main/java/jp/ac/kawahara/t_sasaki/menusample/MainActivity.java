@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         return menuList;
     }//createTeishokuList
 
+
     private class ListItemClickListener
             implements AdapterView.OnItemClickListener{
 
