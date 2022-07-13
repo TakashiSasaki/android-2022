@@ -1,9 +1,11 @@
 package jp.ac.kawahara.t_sasaki.menusample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,11 +24,22 @@ public class MenuThanksActivity extends AppCompatActivity {
         final TextView tvMenuPrice = findViewById(R.id.tvMenuPrice);
         tvMenuPrice.setText(menuPrice);
 
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
-    public void onBackButtonClick(View view){
+    public void onBackButtonClick(View view) {
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
