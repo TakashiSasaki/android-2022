@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleAdapter adapter = new SimpleAdapter(this, _menuList, R.layout.row, FROM, TO);
         _lvMenu.setAdapter(adapter);
         _lvMenu.setOnItemClickListener(new ListItemClickListener());
+
     }
 
     @Override

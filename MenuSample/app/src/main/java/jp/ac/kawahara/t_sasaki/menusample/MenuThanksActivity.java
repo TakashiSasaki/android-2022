@@ -21,6 +21,9 @@ public class MenuThanksActivity extends AppCompatActivity {
         tvMenuName.setText(menuName);
         final TextView tvMenuPrice = findViewById(R.id.tvMenuPrice);
         tvMenuPrice.setText(menuPrice);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     public void onBackButtonClick(View view){
