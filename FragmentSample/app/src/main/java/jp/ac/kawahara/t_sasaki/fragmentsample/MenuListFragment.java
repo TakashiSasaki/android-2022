@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class MenuListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.v("MenuListFragment", "onCreate");
+        Log.v("MenuListFragment", "onCreateView");
         List<Map<String, String>> menuList = new ArrayList<>();
 
         Map<String, String> menu = new HashMap<>();
@@ -98,7 +99,8 @@ public class MenuListFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_menu_list, container, false);
-        v.findViewById(R.id.lvMenu);
+        final ListView lv = v.findViewById(R.id.lvMenu);
+        lv.setAdapter(adapter);
         return v;
     }
 }
