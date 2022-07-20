@@ -67,9 +67,6 @@ public class MenuListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.v("MenuListFragment", "onCreate");
-        // Inflate the layout for this fragment
-        final View v = inflater.inflate(R.layout.fragment_menu_list, container, false);
-
         List<Map<String, String>> menuList = new ArrayList<>();
 
         Map<String, String> menu = new HashMap<>();
@@ -99,13 +96,9 @@ public class MenuListFragment extends Fragment {
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
 
-
-
-
-
-
-
-
+        // Inflate the layout for this fragment
+        final View v = inflater.inflate(R.layout.fragment_menu_list, container, false);
+        v.findViewById(R.id.lvMenu);
         return v;
     }
 }
