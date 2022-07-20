@@ -75,11 +75,10 @@ public class MenuThanksFragment extends Fragment {
         tvMenuPrice.setText(menuPrice);
 
 
-
-
+        return v;
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_thanks, container, false);
+        //return inflater.inflate(R.layout.fragment_menu_thanks, container, false);
     }
 }

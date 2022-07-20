@@ -1,5 +1,6 @@
 package jp.ac.kawahara.t_sasaki.fragmentsample;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -101,6 +103,28 @@ public class MenuListFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_menu_list, container, false);
         final ListView lv = v.findViewById(R.id.lvMenu);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new ListItemClickListener());
         return v;
     }
+
+    private class ListItemClickListener
+            implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent,
+                                View view, int position, long id) {
+            final Map<String, String> item =
+                    (Map<String, String>)
+                            parent.getItemAtPosition(position);
+            final String menuName = item.get("name");
+            final String menuPrice = item.get("price");
+
+            Intent intent = new Intent(getActivity(),
+                    MenuThanksActivity.class);
+            intent.putExtra("menuName", menuName);
+            intent.putExtra("menuPrice", menuPrice);
+            startActivity(intent);
+        }
+    }
+
 }
