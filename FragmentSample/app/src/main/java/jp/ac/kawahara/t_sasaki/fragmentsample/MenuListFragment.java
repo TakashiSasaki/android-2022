@@ -1,15 +1,20 @@
 package jp.ac.kawahara.t_sasaki.fragmentsample;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -25,6 +30,18 @@ public class MenuListFragment extends Fragment {
         Log.v("MenuListFragment", "onCreate");
         super.onCreate(savedInstanceState);
     }
+
+    private Boolean _isLayoutXLarge = true;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final Activity activity = getActivity();
+        final View frame = activity.findViewById(R.id.menuThanksFrame);
+        if(frame == null){
+            _isLayoutXLarge = false;
+        }
+    }//onActivityCreated
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,12 +95,23 @@ public class MenuListFragment extends Fragment {
                             parent.getItemAtPosition(position);
             final String menuName = item.get("name");
             final String menuPrice = item.get("price");
+            Bundle bundle = new Bundle();
+            bundle.putString("menuName", menuName);
+            bundle.putString("menuPrice", menuPrice);
 
-            Intent intent = new Intent(getActivity(),
-                    MenuThanksActivity.class);
-            intent.putExtra("menuName", menuName);
-            intent.putExtra("menuPrice", menuPrice);
-            startActivity(intent);
+            if(_isLayoutXLarge){
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                MenuThanksFragment fragment = new MenuThanksFragment();
+                fragment.setArguments(bundle);
+                transaction.replace(R.id.menuThanksFrame, fragment);
+                transaction.commit();
+            } else {
+                Intent intent = new Intent(getActivity(),
+                        MenuThanksActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
         }
     }//ListItemClickListener
 
