@@ -10,11 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MenuThanksFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MenuThanksFragment extends Fragment {
 
     @Override
