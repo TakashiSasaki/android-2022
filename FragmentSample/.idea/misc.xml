@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/takas/AndroidStudioProjects/android-2022/FragmentSample/app/src/main/res/layout-large/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/takas/AndroidStudioProjects/android-2022/FragmentSample/app/src/main/res/layout-xlarge/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/takas/AndroidStudioProjects/android-2022/FragmentSample/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/takas/AndroidStudioProjects/android-2022/FragmentSample/app/src/main/res/layout/activity_menu_thanks.xml" value="0.1" />
         <entry key="..\:/Users/takas/AndroidStudioProjects/android-2022/FragmentSample/app/src/main/res/layout/fragment_menu_list.xml" value="0.1" />
