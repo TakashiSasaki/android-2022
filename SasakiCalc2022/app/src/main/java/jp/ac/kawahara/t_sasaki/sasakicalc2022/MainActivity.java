@@ -120,6 +120,38 @@ public class MainActivity extends AppCompatActivity {
                     tvOp1.setText("");
                 } catch (Exception e) {
                 }
+            } else if (tvOp1.getText().toString().equals(getString(R.string.opSub))) {
+                try {
+                    int arg1 = Integer.parseInt(tvArg1.getText().toString());
+                    int arg2 = Integer.parseInt(tvArg2.getText().toString());
+                    int result = Math.subtractExact(arg1, arg2);
+                    tvArg1.setText(Integer.toString(result));
+                    tvArg2.setText("");
+                    tvOp1.setText("");
+                } catch (Exception e) {
+                }
+            } else if (tvOp1.getText().toString().equals(getString(R.string.opMul))) {
+                try {
+                    int arg1 = Integer.parseInt(tvArg1.getText().toString());
+                    int arg2 = Integer.parseInt(tvArg2.getText().toString());
+                    int result = Math.multiplyExact(arg1, arg2);
+                    tvArg1.setText(Integer.toString(result));
+                    tvArg2.setText("");
+                    tvOp1.setText("");
+                } catch (Exception e) {
+                }
+            } else if (tvOp1.getText().toString().equals(getString(R.string.opDiv))) {
+                try {
+                    int arg1 = Integer.parseInt(tvArg1.getText().toString());
+                    int arg2 = Integer.parseInt(tvArg2.getText().toString());
+                    int result = arg1 / arg2;
+                    tvArg1.setText(Integer.toString(result));
+                    tvArg2.setText("");
+                    tvOp1.setText("");
+                } catch (Exception e) {
+                }
+            } else {
+                return;
             }
         }
     }
