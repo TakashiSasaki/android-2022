@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btDiv).setOnClickListener(operatorButtonClickListener);
 
         findViewById(R.id.btCA).setOnClickListener(new CaButtonClickListener());
+        findViewById(R.id.btEq).setOnClickListener(new EqButtonClickListener());
     }
 
     class NumberButtonClickListener implements View.OnClickListener {
@@ -100,6 +101,26 @@ public class MainActivity extends AppCompatActivity {
             tvArg3.setText("");
             tvOp1.setText("");
             tvOp2.setText("");
+        }
+    }
+
+    class EqButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (isEmpty(tvArg1)) return;
+            if (isEmpty(tvOp1)) return;
+            if (isEmpty(tvArg2)) return;
+            if (tvOp1.getText().toString().equals(getString(R.string.opAdd))) {
+                try {
+                    int arg1 = Integer.parseInt(tvArg1.getText().toString());
+                    int arg2 = Integer.parseInt(tvArg2.getText().toString());
+                    int result = Math.addExact(arg1, arg2);
+                    tvArg1.setText(Integer.toString(result));
+                    tvArg2.setText("");
+                    tvOp1.setText("");
+                } catch (Exception e) {
+                }
+            }
         }
     }
 }
