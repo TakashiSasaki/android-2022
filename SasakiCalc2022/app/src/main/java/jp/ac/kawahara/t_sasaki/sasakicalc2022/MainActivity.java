@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvArg1, tvArg2, tvArg3, tvOp1, tvOp2;
+    private TextView tvArg1, tvArg2, tvArg3, tvOp1, tvOp2, tvCondition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         tvArg3 = findViewById(R.id.tvArg3);
         tvOp1 = findViewById(R.id.tvOp1);
         tvOp2 = findViewById(R.id.tvOp2);
+        tvCondition = findViewById(R.id.tvCondition);
 
 
         View.OnClickListener numberButtonClickListener = new NumberButtonClickListener();
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             tvArg3.setText("");
             tvOp1.setText("");
             tvOp2.setText("");
+            tvCondition.setText("");
         }
     }
 
@@ -118,7 +120,11 @@ public class MainActivity extends AppCompatActivity {
                     tvArg1.setText(Integer.toString(result));
                     tvArg2.setText("");
                     tvOp1.setText("");
-                } catch (Exception e) {
+                    tvCondition.setText(R.string.conditionOk);
+                } catch (ArithmeticException e) {
+                    tvCondition.setText(R.string.conditionOverflow);
+                } catch (NumberFormatException e){
+                    tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opSub))) {
                 try {
@@ -128,7 +134,11 @@ public class MainActivity extends AppCompatActivity {
                     tvArg1.setText(Integer.toString(result));
                     tvArg2.setText("");
                     tvOp1.setText("");
-                } catch (Exception e) {
+                    tvCondition.setText(R.string.conditionOk);
+                } catch (ArithmeticException e) {
+                    tvCondition.setText(R.string.conditionOverflow);
+                } catch (NumberFormatException e){
+                    tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opMul))) {
                 try {
@@ -138,7 +148,11 @@ public class MainActivity extends AppCompatActivity {
                     tvArg1.setText(Integer.toString(result));
                     tvArg2.setText("");
                     tvOp1.setText("");
-                } catch (Exception e) {
+                    tvCondition.setText(R.string.conditionOk);
+                } catch (ArithmeticException e) {
+                    tvCondition.setText(R.string.conditionOverflow);
+                } catch(NumberFormatException e){
+                    tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opDiv))) {
                 try {
@@ -148,7 +162,11 @@ public class MainActivity extends AppCompatActivity {
                     tvArg1.setText(Integer.toString(result));
                     tvArg2.setText("");
                     tvOp1.setText("");
-                } catch (Exception e) {
+                    tvCondition.setText(R.string.conditionOk);
+                } catch (ArithmeticException e) {
+                    tvCondition.setText(R.string.conditionDiv0);
+                } catch (NumberFormatException e){
+                    tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else {
                 return;

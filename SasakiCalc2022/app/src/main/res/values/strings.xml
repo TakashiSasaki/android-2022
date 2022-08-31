@@ -6,4 +6,8 @@
     <string name="opMul">×</string>
     <string name="opDiv">÷</string>
     <string name="CA">CA</string>
+    <string name="conditionOk">OK</string>
+    <string name="conditionDiv0">Div0</string>
+    <string name="conditionOverflow">Overflow</string>
+    <string name="conditionBadFormat">Bad format</string>
 </resources>
