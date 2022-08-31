@@ -52,11 +52,17 @@ public class MainActivity extends AppCompatActivity {
             final String s = b.getText().toString();
 
             if (isEmpty(tvOp1)) {
-                if (isZero(tvArg1) && b.getId() == R.id.bt0) return;
-                appendString(tvArg1, s);
+                if (isZero(tvArg1)) {
+                    tvArg1.setText(s);
+                } else {
+                    appendString(tvArg1, s);
+                }
             } else {
-                if (isZero(tvArg2) && b.getId() == R.id.bt0) return;
-                appendString(tvArg2, s);
+                if (isZero(tvArg2)) {
+                    tvArg2.setText(s);
+                } else {
+                    appendString(tvArg2, s);
+                }
             }
         }
     }//NumberButtonClickListener
