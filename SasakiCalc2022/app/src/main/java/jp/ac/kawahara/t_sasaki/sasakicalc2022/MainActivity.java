@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btMul).setOnClickListener(operatorButtonClickListener);
         findViewById(R.id.btDiv).setOnClickListener(operatorButtonClickListener);
 
+        findViewById(R.id.btCA).setOnClickListener(new CaButtonClickListener());
     }
 
     class NumberButtonClickListener implements View.OnClickListener {
@@ -73,5 +74,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    class CaButtonClickListener implements View.OnClickListener{
 
+        @Override
+        public void onClick(View v) {
+            tvArg1.setText("");
+            tvArg2.setText("");
+            tvArg3.setText("");
+            tvOp1.setText("");
+            tvOp2.setText("");
+        }
+    }
 }
