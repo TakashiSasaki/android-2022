@@ -17,7 +17,7 @@
             android:layout_margin="1dp"
             android:background="#C5F197"
             android:minWidth="50sp"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/tvArg1"
@@ -26,7 +26,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +41,7 @@
             android:layout_margin="1dp"
             android:background="#BDDFFD"
             android:minWidth="50sp"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/tvArg2"
@@ -50,7 +50,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +65,7 @@
             android:layout_margin="1dp"
             android:background="#BDDFFD"
             android:minWidth="50sp"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/tvArg3"
@@ -74,7 +74,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
