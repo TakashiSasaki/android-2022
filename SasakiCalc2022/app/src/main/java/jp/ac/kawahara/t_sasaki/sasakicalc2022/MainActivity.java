@@ -68,13 +68,15 @@ public class MainActivity extends AppCompatActivity {
     class OperatorButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            final Button b = (Button) v;
-            final TextView tvOp1 = findViewById(R.id.tvOp1);
-            tvOp1.setText(b.getText().toString());
+            if (!isEmpty(tvArg1)) {
+                final Button b = (Button) v;
+                final TextView tvOp1 = findViewById(R.id.tvOp1);
+                tvOp1.setText(b.getText().toString());
+            }
         }
     }
 
-    class CaButtonClickListener implements View.OnClickListener{
+    class CaButtonClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
