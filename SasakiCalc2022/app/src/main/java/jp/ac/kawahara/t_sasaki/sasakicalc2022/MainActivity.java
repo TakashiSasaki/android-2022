@@ -14,17 +14,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View.OnClickListener numberButClickListener = new NumberButtonClickListener();
-        findViewById(R.id.bt0).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt1).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt2).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt3).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt4).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt5).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt6).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt7).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt8).setOnClickListener(numberButClickListener);
-        findViewById(R.id.bt9).setOnClickListener(numberButClickListener);
+        View.OnClickListener numberButtonClickListener = new NumberButtonClickListener();
+        findViewById(R.id.bt0).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt1).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt2).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt3).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt4).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt5).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt6).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt7).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt8).setOnClickListener(numberButtonClickListener);
+        findViewById(R.id.bt9).setOnClickListener(numberButtonClickListener);
+
+        View.OnClickListener operatorButtonClickListener = new OperatorButtonClickListener();
+        findViewById(R.id.btAdd).setOnClickListener(operatorButtonClickListener);
+        findViewById(R.id.btSub).setOnClickListener(operatorButtonClickListener);
+        findViewById(R.id.btMul).setOnClickListener(operatorButtonClickListener);
+        findViewById(R.id.btDiv).setOnClickListener(operatorButtonClickListener);
 
     }
 
@@ -39,5 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
             tvArg1.setText(arg1 + s);
         }
+    }//NumberButtonClickListener
+
+    class OperatorButtonClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            final Button b = (Button)v;
+            final TextView tvOp1 = findViewById(R.id.tvOp1);
+            tvOp1.setText(b.getText().toString());
+        }
     }
+
+
 }

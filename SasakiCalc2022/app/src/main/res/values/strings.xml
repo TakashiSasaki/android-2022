@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SasakiCalc2022</string>
+    <string name="opAdd">＋</string>
+    <string name="opSub">－</string>
+    <string name="opEq">=</string>
+    <string name="opMul">×</string>
+    <string name="opDiv">÷</string>
+    <string name="CA">CA</string>
 </resources>

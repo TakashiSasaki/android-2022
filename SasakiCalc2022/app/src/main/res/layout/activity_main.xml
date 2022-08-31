@@ -111,7 +111,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="÷"
+            android:text="@string/opDiv"
             android:textSize="20sp"></Button>
     </LinearLayout>
 
@@ -149,7 +149,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="×"
+            android:text="@string/opMul"
             android:textSize="20sp"></Button>
     </LinearLayout>
 
@@ -187,7 +187,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="－"
+            android:text="@string/opSub"
             android:textSize="20sp"></Button>
     </LinearLayout>
 
@@ -201,7 +201,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CA"
+            android:text="@string/CA"
             android:textSize="20sp"></Button>
 
         <Button
@@ -217,7 +217,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="="
+            android:text="@string/opEq"
             android:textSize="20sp"></Button>
 
         <Button
@@ -225,7 +225,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="＋"
+            android:text="@string/opAdd"
             android:textSize="20sp"></Button>
     </LinearLayout>
 
