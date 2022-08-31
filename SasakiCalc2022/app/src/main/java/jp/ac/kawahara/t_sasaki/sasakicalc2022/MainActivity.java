@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvArg1, tvArg2, tvArg3, tvOp1, tvOp2;
@@ -50,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
             final String s = b.getText().toString();
 
             if (isEmpty(tvOp1)) {
+                if(isZero(tvArg1) && b.getId() == R.id.bt0) return;
                 appendString(tvArg1, s);
             } else {
+                if(isZero(tvArg2) && b.getId() == R.id.bt0) return;
                 appendString(tvArg2, s);
             }
         }
@@ -63,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
     boolean isEmpty(TextView tv) {
         return tv.getText().toString().length() == 0 ? true : false;
+    }
+
+    boolean isZero(TextView tv){
+        return tv.getText().toString().equals("0") ? true: false;
     }
 
     class OperatorButtonClickListener implements View.OnClickListener {
