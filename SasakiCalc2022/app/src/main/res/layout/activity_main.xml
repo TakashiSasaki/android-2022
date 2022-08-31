@@ -182,14 +182,14 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="CA"
             android:textSize="20sp"></Button>
 
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
+            android:text="0"
             android:textSize="20sp"></Button>
 
         <Button
