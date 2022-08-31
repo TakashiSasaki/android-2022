@@ -2,12 +2,12 @@ package jp.ac.kawahara.t_sasaki.sasakicalc2022;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,25 +52,26 @@ public class MainActivity extends AppCompatActivity {
             final String s = b.getText().toString();
 
             if (isEmpty(tvOp1)) {
-                if(isZero(tvArg1) && b.getId() == R.id.bt0) return;
+                if (isZero(tvArg1) && b.getId() == R.id.bt0) return;
                 appendString(tvArg1, s);
             } else {
-                if(isZero(tvArg2) && b.getId() == R.id.bt0) return;
+                if (isZero(tvArg2) && b.getId() == R.id.bt0) return;
                 appendString(tvArg2, s);
             }
         }
     }//NumberButtonClickListener
 
+    @SuppressLint("SetTextI18n")
     void appendString(TextView tv, String s) {
         tv.setText(tv.getText().toString() + s);
     }
 
     boolean isEmpty(TextView tv) {
-        return tv.getText().toString().length() == 0 ? true : false;
+        return tv.getText().toString().length() == 0;
     }
 
-    boolean isZero(TextView tv){
-        return tv.getText().toString().equals("0") ? true: false;
+    boolean isZero(TextView tv) {
+        return tv.getText().toString().equals("0");
     }
 
     class OperatorButtonClickListener implements View.OnClickListener {
