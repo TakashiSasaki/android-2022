@@ -9,10 +9,18 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView tvArg1, tvArg2, tvArg3, tvOp1, tvOp2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvArg1 = findViewById(R.id.tvArg1);
+        tvArg2 = findViewById(R.id.tvArg2);
+        tvArg3 = findViewById(R.id.tvArg3);
+        tvOp1 = findViewById(R.id.tvOp1);
+        tvOp2 = findViewById(R.id.tvOp2);
+
 
         View.OnClickListener numberButtonClickListener = new NumberButtonClickListener();
         findViewById(R.id.bt0).setOnClickListener(numberButtonClickListener);
@@ -37,20 +45,29 @@ public class MainActivity extends AppCompatActivity {
     class NumberButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            final Button b = (Button)v;
+            final Button b = (Button) v;
             final String s = b.getText().toString();
 
-            final TextView tvArg1 = (TextView)findViewById(R.id.tvArg1);
-            final String arg1 = tvArg1.getText().toString();
-
-            tvArg1.setText(arg1 + s);
+            if (isEmpty(tvOp1)) {
+                appendString(tvArg1, s);
+            } else {
+                appendString(tvArg2, s);
+            }
         }
     }//NumberButtonClickListener
 
-    class OperatorButtonClickListener implements View.OnClickListener{
+    void appendString(TextView tv, String s) {
+        tv.setText(tv.getText().toString() + s);
+    }
+
+    boolean isEmpty(TextView tv) {
+        return tv.getText().toString().length() == 0 ? true : false;
+    }
+
+    class OperatorButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            final Button b = (Button)v;
+            final Button b = (Button) v;
             final TextView tvOp1 = findViewById(R.id.tvOp1);
             tvOp1.setText(b.getText().toString());
         }
