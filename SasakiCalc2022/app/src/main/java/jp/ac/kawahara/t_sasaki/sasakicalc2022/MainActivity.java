@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btCA).setOnClickListener(new CaButtonClickListener());
         findViewById(R.id.btEq).setOnClickListener(new EqButtonClickListener());
+
+        View.OnClickListener signButtonClickListener = new SignButtonClickListener();
+        findViewById(R.id.btSign1).setOnClickListener(signButtonClickListener);
+        findViewById(R.id.btSign2).setOnClickListener(signButtonClickListener);
+        findViewById(R.id.btSign3).setOnClickListener(signButtonClickListener);
     }
 
     class NumberButtonClickListener implements View.OnClickListener {
@@ -91,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
     class OperatorButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            if(isEmpty(tvArg1)){
+            if (isEmpty(tvArg1)) {
                 //
-            } else if(isEmpty(tvOp1)) {
+            } else if (isEmpty(tvOp1)) {
                 final Button b = (Button) v;
                 final TextView tvOp1 = findViewById(R.id.tvOp1);
                 tvOp1.setText(b.getText().toString());
-            } else if(isEmpty(tvArg2)){
+            } else if (isEmpty(tvArg2)) {
                 //
             }
         }
@@ -180,6 +187,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else {
                 return;
+            }
+        }
+    }
+
+    class SignButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            TextView tv;
+            switch (v.getId()) {
+                case R.id.btSign1:
+                    tv = tvArg1;
+                    break;
+                case R.id.btSign2:
+                    tv = tvArg2;
+                    break;
+                case R.id.btSign3:
+                    tv = tvArg3;
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + v.getId());
+            }//switch
+            if (isEmpty(tv)) return;
+            if (isZero(tv)) return;
+            String s = tv.getText().toString();
+            String leftmost = s.substring(0, 1);
+            if (leftmost.equals("-")) {
+                tv.setText(s.substring(1));
+            } else {
+                tv.setText("-" + s);
             }
         }
     }
