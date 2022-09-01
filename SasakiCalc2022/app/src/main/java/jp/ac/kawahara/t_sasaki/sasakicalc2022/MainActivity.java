@@ -91,10 +91,14 @@ public class MainActivity extends AppCompatActivity {
     class OperatorButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            if (!isEmpty(tvArg1)) {
+            if(isEmpty(tvArg1)){
+                //
+            } else if(isEmpty(tvOp1)) {
                 final Button b = (Button) v;
                 final TextView tvOp1 = findViewById(R.id.tvOp1);
                 tvOp1.setText(b.getText().toString());
+            } else if(isEmpty(tvArg2)){
+                //
             }
         }
     }
