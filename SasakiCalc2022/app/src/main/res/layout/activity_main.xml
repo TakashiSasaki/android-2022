@@ -27,6 +27,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
         <Button
@@ -53,6 +54,7 @@
             android:background="#BDDFFD"
             android:gravity="center_horizontal"
             android:minWidth="100sp"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -62,6 +64,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
         <Button
@@ -88,6 +91,7 @@
             android:background="#BDDFFD"
             android:gravity="center_horizontal"
             android:minWidth="100sp"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -97,6 +101,7 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@color/white"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
         <Button
@@ -119,32 +124,36 @@
         <Button
             android:id="@+id/bt1"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number1"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt2"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number2"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt3"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number3"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btDiv"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/opDiv"
             android:textSize="20sp" />
     </LinearLayout>
@@ -157,32 +166,36 @@
         <Button
             android:id="@+id/bt4"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number4"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt5"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number5"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt6"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number6"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btMul"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/opMul"
             android:textSize="20sp" />
     </LinearLayout>
@@ -195,32 +208,36 @@
         <Button
             android:id="@+id/bt7"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number7"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt8"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number8"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt9"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number9"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btSub"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/opSub"
             android:textSize="20sp" />
     </LinearLayout>
@@ -233,32 +250,36 @@
         <Button
             android:id="@+id/btCA"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/CA"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt0"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/number0"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btEq"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/opEq"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btAdd"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/opAdd"
             android:textSize="20sp" />
     </LinearLayout>
@@ -277,6 +298,7 @@
             android:background="#C5F197"
             android:minWidth="100sp"
             android:minHeight="20sp"
+            android:textColor="@android:color/black"
             android:textSize="30sp" />
 
 
