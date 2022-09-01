@@ -56,12 +56,18 @@ public class MainActivity extends AppCompatActivity {
             if (isEmpty(tvOp1)) {
                 if (isZero(tvArg1)) {
                     tvArg1.setText(s);
+                } else if (tvCondition.getText().toString().equals(getString(R.string.conditionOk))) {
+                    tvArg1.setText(s);
+                    tvCondition.setText("");
                 } else {
                     appendString(tvArg1, s);
                 }
             } else {
                 if (isZero(tvArg2)) {
                     tvArg2.setText(s);
+                } else if (tvCondition.getText().toString().equals(getString(R.string.conditionOk))) {
+                    tvArg2.setText(s);
+                    tvCondition.setText("");
                 } else {
                     appendString(tvArg2, s);
                 }
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     tvCondition.setText(R.string.conditionOk);
                 } catch (ArithmeticException e) {
                     tvCondition.setText(R.string.conditionOverflow);
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opSub))) {
@@ -137,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     tvCondition.setText(R.string.conditionOk);
                 } catch (ArithmeticException e) {
                     tvCondition.setText(R.string.conditionOverflow);
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opMul))) {
@@ -151,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     tvCondition.setText(R.string.conditionOk);
                 } catch (ArithmeticException e) {
                     tvCondition.setText(R.string.conditionOverflow);
-                } catch(NumberFormatException e){
+                } catch (NumberFormatException e) {
                     tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else if (tvOp1.getText().toString().equals(getString(R.string.opDiv))) {
@@ -165,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     tvCondition.setText(R.string.conditionOk);
                 } catch (ArithmeticException e) {
                     tvCondition.setText(R.string.conditionDiv0);
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     tvCondition.setText(R.string.conditionBadFormat);
                 }
             } else {
