@@ -1,11 +1,15 @@
-package jp.ac.kawahara.t_sasaki.sasakicalc2022;
+/*
+  こめんと
+*/
 
-import androidx.appcompat.app.AppCompatActivity;
+package jp.ac.kawahara.t_sasaki.sasakicalc2022;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btCA).setOnClickListener(new CaButtonClickListener(this));
         findViewById(R.id.btEq).setOnClickListener(new EqButtonClickListener(this));
 
+        findViewById(R.id.btCE).setOnClickListener(new CeButtonClickListener());
+
         View.OnClickListener signButtonClickListener = new SignButtonClickListener(this);
         findViewById(R.id.btSign1).setOnClickListener(signButtonClickListener);
         findViewById(R.id.btSign2).setOnClickListener(signButtonClickListener);
@@ -62,6 +68,22 @@ public class MainActivity extends AppCompatActivity {
 
     boolean isZero(TextView tv) {
         return tv.getText().toString().equals("0");
+    }
+
+    class CeButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!isEmpty(tvArg2)) {
+                tvArg2.setText("");
+                return;
+            } else if (!isEmpty(tvOp1)) {
+                tvOp1.setText("");
+                return;
+            } else if (!isEmpty(tvArg1)) {
+                tvArg1.setText("");
+                return;
+            }
+        }
     }
 
 }

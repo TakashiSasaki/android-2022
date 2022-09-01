@@ -290,9 +290,20 @@
         android:minHeight="10sp"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btCE"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/CE"
+            android:textSize="20sp" />
+
+
         <TextView
             android:id="@+id/tvCondition"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:background="#C5F197"
