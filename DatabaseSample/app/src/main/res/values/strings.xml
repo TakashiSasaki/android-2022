@@ -12,7 +12,7 @@
         <item>マティーニ</item>
     </string-array>
     <string name="tv_lb_name">選択されたカクテル：</string>
-    <string name="tv_name">未選択</string>
+    <string name="tv_name">未選択</string>。
     <string name="tv_lb_note">感想</string>
     <string name="btn_save">保存</string>
 </resources>
