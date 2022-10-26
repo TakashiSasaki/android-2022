@@ -62,15 +62,19 @@ public class MainActivity extends AppCompatActivity {
             _cocktailId = position;
             _cocktailName = (String) parent.getItemAtPosition(position);
 
-            SQLiteDatabase writableDatabase = _helper.getWritableDatabase();
-            Cursor cursor = writableDatabase.rawQuery
+            SQLiteDatabase readableDatabase = _helper.getReadableDatabase();
+            Cursor cursor = readableDatabase.rawQuery
                     ("SELECT * FROM cocktailmemos WHERE _id = " + _cocktailId, null);
+
+            String note = "";
 
             while (cursor.moveToNext()) {
                 int idxNote = cursor.getColumnIndex("note");
-                String s = cursor.getString(idxNote);
+                note = cursor.getString(idxNote);
             }
+            cursor.close();
 
+            ((EditText)(findViewById(R.id.etNote))).setText(note);
             ((TextView) (findViewById(R.id.tvCocktailName))).setText(_cocktailName);
             findViewById(R.id.btnSave).setEnabled(true);
         }
