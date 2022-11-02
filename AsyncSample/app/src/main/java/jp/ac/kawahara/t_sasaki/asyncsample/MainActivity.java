@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,16 +41,29 @@ public class MainActivity extends AppCompatActivity {
         ((ListView)findViewById(R.id.lvCityList))
                 .setAdapter(adapter);
         ((ListView)findViewById(R.id.lvCityList))
-                .setOnItemClickListener(new ListItemClickiListener());
+                .setOnItemClickListener(new ListItemClickListener());
 
     }//onCreate
 
     private void receiveWeatherInfo(final String urlFull){
-
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Log.d(DEBUG_TAG, "before ExecutorService#submit");
+        executorService.submit(new WeatherInfoBackgroundReceiver());
+        Log.d(DEBUG_TAG, "after ExecutorService#submit");
     }
 
 
-    private class ListItemClickiListener implements AdapterView.OnItemClickListener {
+    private class WeatherInfoBackgroundReceiver implements Runnable{
+
+        @Override
+        public void run() {
+            Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");
+        }
+    }
+
+
+
+    private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             final Map<String,String> item = _list.get(position);
@@ -55,8 +71,15 @@ public class MainActivity extends AppCompatActivity {
             final String urlFull = WEATHERINFO_URL + "?q=" + q + "&APP_ID=" + APP_ID;
             Log.d(DEBUG_TAG, urlFull);
             receiveWeatherInfo(urlFull);
+            Log.d(DEBUG_TAG, "receiveWeatherInfo has finished.");
         }
     }
+
+
+
+
+
+
 
 
 
