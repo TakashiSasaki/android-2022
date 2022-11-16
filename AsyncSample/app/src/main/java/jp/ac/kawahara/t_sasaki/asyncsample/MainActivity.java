@@ -1,8 +1,11 @@
 package jp.ac.kawahara.t_sasaki.asyncsample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.os.HandlerCompat;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,22 +49,36 @@ public class MainActivity extends AppCompatActivity {
     }//onCreate
 
     private void receiveWeatherInfo(final String urlFull){
+        //メインスレッドでハンドラを生成する。
+        Looper looper = Looper.getMainLooper();
+        Handler handler = HandlerCompat.createAsync(looper);
+
+        //以下はサブスレッドの生成処理
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Log.d(DEBUG_TAG, "before ExecutorService#submit");
-        executorService.submit(new WeatherInfoBackgroundReceiver());
+
+        //古典的なJavaではメソッドを引数として渡せないのでRunnableオブジェクトに包んで渡す。
+        executorService.submit(new WeatherInfoBackgroundReceiver(handler));
+
+        //Runnableオブジェクトの代わりにラムダ式を渡すこともできる。
+        //executorService.submit( ()->{Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");});
+
         Log.d(DEBUG_TAG, "after ExecutorService#submit");
     }
 
-
     private class WeatherInfoBackgroundReceiver implements Runnable{
+        final Handler _handler;
+
+        WeatherInfoBackgroundReceiver(Handler handler){
+            this._handler = handler;
+        }
 
         @Override
         public void run() {
             Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");
+            this._handler.post( ()->Log.d(DEBUG_TAG, "executed by the Handler") );
         }
     }
-
-
 
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
