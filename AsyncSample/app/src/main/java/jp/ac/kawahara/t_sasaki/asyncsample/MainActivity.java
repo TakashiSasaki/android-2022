@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 con.connect();
                 is = con.getInputStream();
                 result = is2String(is);
+                Log.d(DEBUG_TAG, result);
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             final Map<String, String> item = _list.get(position);
             final String q = item.get("q");
-            final String urlFull = WEATHERINFO_URL + "?q=" + q + "&APP_ID=" + APP_ID;
+            final String urlFull = WEATHERINFO_URL + "&q=" + q + "&APP_ID=" + APP_ID;
             Log.d(DEBUG_TAG, urlFull);
             receiveWeatherInfo(urlFull);
             Log.d(DEBUG_TAG, "receiveWeatherInfo has finished.");
@@ -265,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
             Handler handler;
 
+            @UiThread
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -272,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
                 this.handler = HandlerCompat.createAsync(looper);
             }
 
+            @WorkerThread
             @Override
             protected Object doInBackground(Object[] objects) {
                 //doInBackground is executed in the sub-sthred.
@@ -283,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
 
+            @UiThread
             @Override
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
