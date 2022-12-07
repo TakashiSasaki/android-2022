@@ -11,9 +11,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.UiThread;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.HandlerCompat;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }//onCreate
 
+    @UiThread
     private void receiveWeatherInfo(final String urlFull) {
         //メインスレッドでハンドラを生成する。
         Looper looper = Looper.getMainLooper();
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(DEBUG_TAG, "before ExecutorService#submit");
 
         //古典的なJavaではメソッドを引数として渡せないのでRunnableオブジェクトに包んで渡す。
-        executorService.submit(new WeatherInfoBackgroundReceiver(handler));
+        executorService.submit(new WeatherInfoBackgroundReceiver(handler, urlFull));
 
         //Runnableオブジェクトの代わりにラムダ式を渡すこともできる。
         //executorService.submit( ()->{Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");});
@@ -71,27 +73,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class WeatherInfoBackgroundReceiver implements Runnable {
-        final Handler _handler;
+        private final Handler _handler;
+        private final String _urlFull;
 
-        WeatherInfoBackgroundReceiver(Handler handler) {
+        //コンストラクタ
+        WeatherInfoBackgroundReceiver(Handler handler, String urlFull) {
             this._handler = handler;
+            this._urlFull = urlFull;
         }
 
+        @WorkerThread
         @Override
         public void run() {
+            //この run はサブスレッドで実行される
             Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");
+            WeatherInfoPostExecutor postExecutor = new WeatherInfoPostExecutor();
+            this._handler.post(postExecutor);
+        }//run
 
-            //なぜかエラーにならない。
-            //((TextView) findViewById(R.id.tvWeatherDesc))
-            //        .setText("サブスレッドで直接実行。");
+        class WeatherInfoPostExecutor implements Runnable {
 
-            this._handler.post(() -> {
-                Log.d(DEBUG_TAG, "executed by the Handler");
-                ((TextView) findViewById(R.id.tvWeatherDesc))
-                        .setText("サブスレッドから戻ってきました。");
-            });
-        }
-    }
+            @UiThread
+            @Override
+            public void run() {
+                //ここにUIスレッドで行う処理コードを記述
+            }//run
+        }//WeatherInfoPostExecutor
+
+    }//WeatherInfoBackgroundReceiver
 
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
