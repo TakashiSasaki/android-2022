@@ -56,26 +56,11 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/threadClassTest1Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="threadClassTest1"
                 android:text="threadClassTest1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Threadクラスを継承する方法" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="threadClassTest2"
-                android:text="threadClassTest2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,6 +73,24 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/threadClassTest2Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="threadClassTest2"
+                android:text="threadClassTest2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Threadクラスを継承する方法" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/asyncTaskTestButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="asyncTaskTest"
