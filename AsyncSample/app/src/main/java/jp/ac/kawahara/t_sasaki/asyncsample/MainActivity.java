@@ -1,8 +1,5 @@
 package jp.ac.kawahara.t_sasaki.asyncsample;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.os.HandlerCompat;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,12 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.os.HandlerCompat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String DEBUG_TAG = "AsyncSample";
     private static final String WEATHERINFO_URL
-            ="http://api.openweathermap.org/data/2.5/weather?lang=ja";
+            = "http://api.openweathermap.org/data/2.5/weather?lang=ja";
     private static final String APP_ID = "45e1a251abcf21306d5e1497fd4c3457";
 
     private List<Map<String, String>> _list;
@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, _list,
                 android.R.layout.simple_list_item_1,
-                new String[] {"name"},
-                new int[] {android.R.id.text1});
+                new String[]{"name"},
+                new int[]{android.R.id.text1});
 
-        ((ListView)findViewById(R.id.lvCityList))
+        ((ListView) findViewById(R.id.lvCityList))
                 .setAdapter(adapter);
-        ((ListView)findViewById(R.id.lvCityList))
+        ((ListView) findViewById(R.id.lvCityList))
                 .setOnItemClickListener(new ListItemClickListener());
 
     }//onCreate
 
-    private void receiveWeatherInfo(final String urlFull){
+    private void receiveWeatherInfo(final String urlFull) {
         //メインスレッドでハンドラを生成する。
         Looper looper = Looper.getMainLooper();
         Handler handler = HandlerCompat.createAsync(looper);
@@ -66,24 +66,33 @@ public class MainActivity extends AppCompatActivity {
         Log.d(DEBUG_TAG, "after ExecutorService#submit");
     }
 
-    private class WeatherInfoBackgroundReceiver implements Runnable{
+    private class WeatherInfoBackgroundReceiver implements Runnable {
         final Handler _handler;
 
-        WeatherInfoBackgroundReceiver(Handler handler){
+        WeatherInfoBackgroundReceiver(Handler handler) {
             this._handler = handler;
         }
 
         @Override
         public void run() {
             Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");
-            this._handler.post( ()->Log.d(DEBUG_TAG, "executed by the Handler") );
+
+            //なぜかエラーにならない。
+            //((TextView) findViewById(R.id.tvWeatherDesc))
+            //        .setText("サブスレッドで直接実行。");
+
+            this._handler.post(() -> {
+                Log.d(DEBUG_TAG, "executed by the Handler");
+                ((TextView) findViewById(R.id.tvWeatherDesc))
+                        .setText("サブスレッドから戻ってきました。");
+            });
         }
     }
 
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            final Map<String,String> item = _list.get(position);
+            final Map<String, String> item = _list.get(position);
             final String q = item.get("q");
             final String urlFull = WEATHERINFO_URL + "?q=" + q + "&APP_ID=" + APP_ID;
             Log.d(DEBUG_TAG, urlFull);
@@ -91,14 +100,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(DEBUG_TAG, "receiveWeatherInfo has finished.");
         }
     }
-
-
-
-
-
-
-
-
 
 
     private List<Map<String, String>> createList() {
@@ -122,12 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
         return list;
     }
-
-
-
-
-
-
 
 
 }//MainActivity
