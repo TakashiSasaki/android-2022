@@ -18,6 +18,13 @@ import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.HandlerCompat;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,9 +94,56 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             //この run はサブスレッドで実行される
             Log.d(DEBUG_TAG, "WeatherInfoBackgroundReceiver#run");
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+
+            try {
+                URL url = new URL(_urlFull);
+                con = (HttpURLConnection) url.openConnection();
+                con.setConnectTimeout(1000);
+                con.setReadTimeout(1000);
+                con.setRequestMethod("GET");
+                con.connect();
+                is = con.getInputStream();
+                result = is2String(is);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                Log.e(DEBUG_TAG, "URL変換失敗" + e);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(DEBUG_TAG, "通信失敗" + e);
+            } finally {
+                if (con != null) {
+                    con.disconnect();
+                }
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }//try
+                }
+            }//try
+
+
             WeatherInfoPostExecutor postExecutor = new WeatherInfoPostExecutor();
             this._handler.post(postExecutor);
         }//run
+
+        private String is2String(InputStream is) throws IOException {
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            char[] b = new char[1024];
+            int line;
+            while (0 <= (line = reader.read(b))) {
+                sb.append(b, 0, line);
+            }
+            return sb.toString();
+        }//is2String
 
         class WeatherInfoPostExecutor implements Runnable {
 
